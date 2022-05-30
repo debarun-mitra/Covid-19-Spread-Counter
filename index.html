@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid 19 Spread Counter</title>
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="mylogo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&family=Varela&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+ <!--  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.0/dist/chart.min.js"></script>  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+    <script src="https://kit.fontawesome.com/e7fd050cda.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadingComplete()">
+
+<div id="loading" class="text-white justify-content-center align-items-center"> 
+  <div class="spinner-border m-5 text-white" role="status">
+    <span class="visually-hidden m-auto">Loading...</span>
+  </div>
+</div>
+
+<div id="background-image"></div>
+<div id="overlay" class=""> </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
+  
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon navbar-dark"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav pull-right">
+              <li class="nav-item mx-2">
+                <a class="nav-link active text-light" aria-current="page" href="#">HOME</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link active text-light" aria-current="page" href="https://www.who.int/health-topics/coronavirus#tab=tab_1">CORONA</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link active text-light" href="https://github.com/M-Media-Group/Covid-19-API">API</a>
+              </li>
+              <li class="nav-item mx-2">
+          <!--      <a class="nav-link active text-light" href="#" tabindex="-1" aria-disabled="true">CONTACT US</a>     -->
+              </li>
+          </div>
+        </div>
+      </nav>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------->
+  <div class="heading-container">
+    <div class="heading">
+      Covid 19 Spread Counter
+    </div>
+    <div class="sub-heading">
+      This website shows you daily statistics of Corona spread
+    </div>
+  </div>
+  <div id="search" class="my-3 py-3">
+    <div class="dropdown d-inline px-3">
+      <button id="country-selector-button" class="btn btn-secondary dropdown-toggle glow-border" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Select Country
+      </button>
+      <ul id="country-dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      
+      </ul>
+    </div>
+    <button id="country-search-button"type="button" class="btn btn-primary d-inline ml-3">Search</button>
+  </div>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+  <div id="general-details-container" class="bgdarkoverlay"> </div>
+
+  <div id="radio-button-container" class="mx-auto w-25">
+    <div class="btn-group d-flex justify-content-around" role="group" aria-label="Basic radio toggle button group">
+      <div class="radio-button">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio1">1 Month</label>
+      </div>
+      <div class="radio-button">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio2">3 Months</label>
+      </div>
+      <div class="radio-button">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio3">6 Months</label>
+      </div>
+      <div class="radio-button">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="btnradio4">All</label>
+      </div>
+    </div>
+  </div>
+
+  <div id="canvas-container-container" class="">
+    <div id="canvas-container" class=""> </div>
+  </div>
+  <div id="spinner" class="mx-auto">
+    <div class="spinner-border m-5 text-white" role="status">
+      <span class="visually-hidden m-auto">Loading...</span>
+    </div>
+  </div>
+
+  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+  
+  
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+  <div class='footer text-center'>
+    <div class="d-flex py-1 flex-row justify-content-center">
+      <h6 class='mx-4 pt-2'>Made by: CITM Project Group A</h6>
+      <a href="https://github.com/debarun-mitra" class="my-auto mx-2"><i class="fab fa-github fa-1x text-light"></i></a>
+      <a href="https://www.linkedin.com/in/debarun-mitra/" class=" my-auto"><i class="fab fa-linkedin fa-1x text-light"></i></a>
+    </div>
+  </div>
+
+    
+
+
+  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</body>
+</html>
